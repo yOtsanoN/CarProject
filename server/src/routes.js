@@ -2,6 +2,7 @@ const UserController = require('./controllers/UserController')
 const UserAuthenController = require('./controllers/UserAuthenController')
 const isAuthenController = require('./authen/isAuthenController')
 const BlogController = require('./controllers/BlogController')
+const CarController = require('./controllers/CarController');
 module.exports = (app) => {
     /* RESFUL Api for users management */
     // create user
@@ -50,5 +51,25 @@ module.exports = (app) => {
     app.get('/blogs',
         BlogController.index
     )
-
+     /* Car routes */
+    // Create car
+    app.post('/car',
+         CarController.create
+    );
+    // Edit car
+    app.put('/car/:carId',
+        CarController.put
+    );
+    // Delete car
+    app.delete('/car/:carId',
+        CarController.remove
+    );
+    // Get car by ID
+    app.get('/car/:carId',
+        CarController.show
+    );
+    // Get all cars
+    app.get('/cars',
+        CarController.index
+    );
 }
